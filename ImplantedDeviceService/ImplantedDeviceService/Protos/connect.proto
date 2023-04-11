@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "ImplantedDeviceService";
+
+package connect;
+
+// The greeting service definition.
+service Connection {
+  // Sends a greeting
+  rpc Initialization (Initialize) returns (GraphSamples);
+  rpc FrequencyChange (Frequency) returns (GraphSamples);
+  rpc PhaseChange (Phase) returns (GraphSamples);
+}
+
+//Requests
+message Initialize {
+	string init_message = 1;
+}
+
+message Frequency {
+	double cycles_per_second = 1;
+}
+
+message Phase {
+	double number = 1;
+}
+
+//Responses
+message Point {
+	double x = 1;
+	double y = 2;
+}
+
+message GraphSamples {
+	repeated Point samples = 1;
+}
