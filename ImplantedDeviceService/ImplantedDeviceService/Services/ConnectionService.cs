@@ -9,10 +9,11 @@ namespace ImplantedDeviceService.Services
         //Eventually change this and register MyCosine class as a singleton service instead
         //This currently is not as flexible as using dependency injecetion.
         private readonly MyCosine _my_cosine;
-        public ConnectionService(ILogger<ConnectionService> logger)
+
+        public ConnectionService(ILogger<ConnectionService> logger, MyCosine my_cosine)
         {
             _logger = logger;
-            _my_cosine = new MyCosine();
+            _my_cosine = my_cosine;
         }
 
         //I still have not decided if I should even have my own point class or not
